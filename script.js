@@ -30,104 +30,41 @@ function generatePassword() {
   // Catch case if user doesn't specify any characters for their password
   if ((passwordUpper == false) && (passwordLower == false) && (passwordNumbers == false) && (passwordSpecial == false)) {
     alert("Please choose at least one category of characters to include in your password.")
-  }
+  };
   
- 
-  // If statements to catch all cases of different combinations of user chosen characters for the password
-  // if (passwordUpper == true) {
-  //   characters = characters.concat(upper);
-  //   if (passwordLower == true) {
-  //     characters = characters.concat(lower);
-  //     if (passwordNumbers == true) {
-  //       characters = characters.concat(numbers);
-  //       if (passwordSpecial == true) {
-  //         characters = characters.concat(special);
-  //       }
-  //     }
-  //     if (passwordNumbers == false){
-  //       if (passwordSpecial == true) {
-  //         characters = characters.concat(special);
-  //       }
-  //     }
-  //   }
-  //   if (passwordLower == false) {
-  //     if (passwordNumbers == true) {
-  //       characters = characters.concat(numbers);
-  //       if (passwordSpecial == true) {
-  //         characters = characters.concat(special);
-  //       }
-  //     }
-  //     if (passwordNumbers == false){
-  //       if (passwordSpecial == true) {
-  //         characters = characters.concat(special);
-  //       }
-  //     }
-  //   }
-  // }
-  // if (passwordUpper == false) {
-  //   if (passwordLower == true) {
-  //     characters = characters.concat(lower);
-  //     if (passwordNumbers == true) {
-  //       characters = characters.concat(numbers);
-  //       if (passwordSpecial == true) {
-  //         characters = characters.concat(special);
-  //       }
-  //     }
-  //     if (passwordNumbers == false){
-  //       if (passwordSpecial == true) {
-  //         characters = characters.concat(special);
-  //       }
-  //     }
-  //   }
-  //   if (passwordLower == false) {
-  //     if (passwordNumbers == true) {
-  //       characters = characters.concat(numbers);
-  //       if (passwordSpecial == true) {
-  //         characters = characters.concat(special);
-  //       }
-  //     }
-  //     if (passwordNumbers == false){
-  //       if (passwordSpecial == true) {
-  //         characters = characters.concat(special);
-  //       }
-  //     }
-  //   }
-  // }
 
+  // If statements to catch all cases of different combinations of user chosen characters for the password
   if (passwordUpper) {
     characters = characters.concat(upper);
     guaranteedCharacters = guaranteedCharacters.concat(upper.charAt(Math.floor(Math.random() * upper.length)));
-  }
+  };
   if (passwordLower) {
     characters = characters.concat(lower);
     guaranteedCharacters = guaranteedCharacters.concat(lower.charAt(Math.floor(Math.random() * lower.length)));
-  }
+  };
   if (passwordNumbers) {
     characters = characters.concat(numbers);
     guaranteedCharacters = guaranteedCharacters.concat(numbers.charAt(Math.floor(Math.random() * numbers.length)));
-  }
+  };
   if (passwordSpecial) {
     characters = characters.concat(special);
     guaranteedCharacters = guaranteedCharacters.concat(special.charAt(Math.floor(Math.random() * special.length)));
-  }
+  };
 
   console.log('CHARACTERS: ', characters);
   console.log('GUARANTEED CHARACTERS: ', guaranteedCharacters);
 
   // Generates random string from the resulting characters list
   for (let i = 0; i < passwordLength; i++) {
-    console.log('RESULT: ', characters.charAt(Math.floor(Math.random() * characters.length)));
     result += characters.charAt(Math.floor(Math.random() * characters.length));
   }
 
   for (let j = 0; j < guaranteedCharacters.length; j++) {
-    // result.charAt(j).replace(guaranteedCharacters.charAt(j));
     result = result.replace(result.charAt(j), guaranteedCharacters.charAt(j));
   }
 
   return result;
 }
-
 
 // Write password to the #password input
 function writePassword() {
@@ -136,8 +73,6 @@ function writePassword() {
 
   passwordText.value = password;
 }
-
-
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
